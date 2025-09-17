@@ -27,7 +27,7 @@ import {
   AlertDescription
 } from '@chakra-ui/react'
 import { Card } from '../Card'
-import { mockTasks, mockNotes, Note } from '@/lib/mockData'
+import { mockTasks, mockNotes } from '@/lib/mockData'
 import { useState } from 'react'
 
 export function NotePage() {
@@ -44,9 +44,8 @@ export function NotePage() {
   const currentYear = today.getFullYear()
   const currentMonth = today.getMonth()
 
-  // 月の最初の日と最後の日を取得
+  // 月の最初の日を取得
   const firstDay = new Date(currentYear, currentMonth, 1)
-  const lastDay = new Date(currentYear, currentMonth + 1, 0)
   
   // 月の最初の週の開始日（月曜日）を取得
   const startDate = new Date(firstDay)
@@ -85,9 +84,6 @@ export function NotePage() {
     onNoteModalOpen()
   }
 
-  const formatDate = (date: Date) => {
-    return `${date.getMonth() + 1}/${date.getDate()}`
-  }
 
   const formatDateForModal = (dateStr: string) => {
     const date = new Date(dateStr)
@@ -249,7 +245,7 @@ export function NotePage() {
                 <FormLabel fontSize="sm">種別</FormLabel>
                 <Select
                   value={noteForm.type}
-                  onChange={(e) => setNoteForm({...noteForm, type: e.target.value as any})}
+                  onChange={(e) => setNoteForm({...noteForm, type: e.target.value as 'match' | 'training' | 'general'})}
                 >
                   <option value="general">一般</option>
                   <option value="match">試合</option>
