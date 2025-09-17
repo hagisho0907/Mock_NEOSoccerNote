@@ -23,9 +23,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  Checkbox,
   AspectRatio,
-  Image,
   IconButton,
   useDisclosure,
   Modal,
@@ -39,7 +37,6 @@ import {
   AlertIcon,
   AlertDescription,
   Stat,
-  StatLabel,
   StatNumber,
   StatHelpText
 } from '@chakra-ui/react'
@@ -49,8 +46,7 @@ import {
   mockIntegrations, 
   VideoClip, 
   MatchStats, 
-  mockVideoClips, 
-  mockMatchStats,
+  mockVideoClips,
   mockSessions,
   Session
 } from '@/lib/mockData'
@@ -125,8 +121,11 @@ function SessionCard({ session, hasVideo = false }: SessionCardProps) {
                 {getTypeLabel(session.type)}
               </Badge>
               {hasVideo && (
-                <Badge colorScheme="orange" size="sm" leftIcon={<VideoIcon />}>
-                  動画あり
+                <Badge colorScheme="orange" size="sm">
+                  <HStack spacing={1}>
+                    <VideoIcon />
+                    <Text>動画あり</Text>
+                  </HStack>
                 </Badge>
               )}
             </HStack>
