@@ -203,6 +203,134 @@ export const mockNotes: Note[] = [
   }
 ]
 
+// Medical Data
+export interface MedicalHistory {
+  id: string
+  bodyPart: string
+  injuryType: string
+  occurredDate: string
+  severity: 'mild' | 'moderate' | 'severe'
+  treatment: string
+  returnCriteria: string
+  currentStage: string
+}
+
+export interface Screening {
+  id: string
+  date: string
+  rangeOfMotion: {
+    shoulder: { left: number; right: number }
+    hip: { left: number; right: number }
+    ankle: { left: number; right: number }
+  }
+  strength: {
+    hamstring: { left: number; right: number }
+    quadriceps: { left: number; right: number }
+    glutes: { left: number; right: number }
+  }
+  fmsScore: number
+  knownRisks: string[]
+}
+
+export interface RehabPlan {
+  id: string
+  phase: 'acute' | 'subacute' | 'return_to_play'
+  allowedMovements: string[]
+  exerciseLimit: string
+  homeExerciseVideos: string[]
+  startDate: string
+  targetDate: string
+}
+
+export interface LabResult {
+  id: string
+  type: 'blood' | 'body_composition' | 'genetic'
+  source: string
+  date: string
+  results: Record<string, any>
+}
+
+export const mockMedicalHistory: MedicalHistory[] = [
+  {
+    id: '1',
+    bodyPart: '右膝',
+    injuryType: '内側側副靭帯損傷',
+    occurredDate: '2024-08-15',
+    severity: 'moderate',
+    treatment: '保存療法、理学療法',
+    returnCriteria: '痛みなし、可動域制限なし、筋力90%以上',
+    currentStage: 'フェーズ3: 競技復帰準備'
+  },
+  {
+    id: '2',
+    bodyPart: '左足首',
+    injuryType: '外側靭帯捻挫',
+    occurredDate: '2024-06-20',
+    severity: 'mild',
+    treatment: 'RICE療法、テーピング',
+    returnCriteria: '腫脹なし、バランス感覚正常',
+    currentStage: '競技復帰済み'
+  }
+]
+
+export const mockScreening: Screening[] = [
+  {
+    id: '1',
+    date: '2024-09-15',
+    rangeOfMotion: {
+      shoulder: { left: 180, right: 175 },
+      hip: { left: 120, right: 115 },
+      ankle: { left: 45, right: 40 }
+    },
+    strength: {
+      hamstring: { left: 85, right: 80 },
+      quadriceps: { left: 90, right: 88 },
+      glutes: { left: 88, right: 85 }
+    },
+    fmsScore: 16,
+    knownRisks: ['右膝可動域制限', '左右筋力差']
+  }
+]
+
+export const mockRehabPlan: RehabPlan[] = [
+  {
+    id: '1',
+    phase: 'return_to_play',
+    allowedMovements: ['ジョギング', '軽い方向転換', 'ボールタッチ'],
+    exerciseLimit: '心拍数150bpm以下、痛み0レベル',
+    homeExerciseVideos: ['膝安定化エクササイズ', 'バランストレーニング'],
+    startDate: '2024-09-10',
+    targetDate: '2024-10-01'
+  }
+]
+
+export const mockLabResults: LabResult[] = [
+  {
+    id: '1',
+    type: 'blood',
+    source: '田中クリニック',
+    date: '2024-09-10',
+    results: {
+      hemoglobin: 14.8,
+      hematocrit: 44.2,
+      iron: 120,
+      vitamin_d: 32
+    }
+  },
+  {
+    id: '2',
+    type: 'body_composition',
+    source: 'InBody測定',
+    date: '2024-09-12',
+    results: {
+      body_fat: 8.5,
+      muscle_mass: 62.3,
+      bone_mass: 3.2,
+      bmr: 1850
+    }
+  }
+]
+
 export const mockChatMessages: ChatMessage[] = [
   {
     id: '1',

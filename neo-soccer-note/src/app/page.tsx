@@ -5,6 +5,7 @@ import { Layout } from '@/components/Layout'
 import { HomePage } from '@/components/pages/HomePage'
 import { StatsPage } from '@/components/pages/StatsPage'
 import { LifelogPage } from '@/components/pages/LifelogPage'
+import { MedicalPage } from '@/components/pages/MedicalPage'
 import { NotePage } from '@/components/pages/NotePage'
 import { BuddyPage } from '@/components/pages/BuddyPage'
 import { SupportPage } from '@/components/pages/SupportPage'
@@ -21,6 +22,8 @@ export default function Home() {
         return <StatsPage />
       case 'lifelog':
         return <LifelogPage />
+      case 'medical':
+        return <MedicalPage />
       case 'note':
         return <NotePage />
       case 'buddy':
