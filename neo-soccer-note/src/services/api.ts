@@ -191,7 +191,7 @@ export class ChatService {
     })
   }
 
-  static async sendMessage(content: string, _role: string): Promise<ChatMessage> {
+  static async sendMessage(content: string, __role: string): Promise<ChatMessage> {
     // TODO: Replace with actual API call
     const newMessage: ChatMessage = {
       id: Date.now().toString(),
@@ -221,7 +221,7 @@ export class PassportService {
     })
   }
 
-  static async createShareLink(_options: unknown): Promise<string> {
+  static async createShareLink(__options: unknown): Promise<string> {
     // TODO: Replace with actual API call
     return new Promise((resolve) => {
       setTimeout(() => resolve(`https://share.neosoccernote.com/${Date.now()}`), 500)
@@ -244,9 +244,9 @@ export class IntegrationService {
     })
   }
 
-  static async connectIntegration(id: string, _credentials: unknown): Promise<Integration> {
+  static async connectIntegration(_id: string, __credentials: unknown): Promise<Integration> {
     // TODO: Replace with actual API call
-    const integration = mockIntegrations.find(i => i.id === id)
+    const integration = mockIntegrations.find(i => i.id === _id)
     if (!integration) {
       throw new Error('Integration not found')
     }
@@ -283,9 +283,9 @@ export class IntegrationService {
     })
   }
 
-  static async updateIntegrationSettings(id: string, _settings: unknown): Promise<Integration> {
+  static async updateIntegrationSettings(_id: string, __settings: unknown): Promise<Integration> {
     // TODO: Replace with actual API call
-    const integration = mockIntegrations.find(i => i.id === id)
+    const integration = mockIntegrations.find(i => i.id === _id)
     if (!integration) {
       throw new Error('Integration not found')
     }
@@ -315,9 +315,9 @@ export class LifelogService {
     })
   }
 
-  static async updateFoodEntry(id: string, entry: Partial<FoodEntry>): Promise<FoodEntry> {
+  static async updateFoodEntry(_id: string, entry: Partial<FoodEntry>): Promise<FoodEntry> {
     // TODO: Replace with actual API call
-    const existingEntry = mockFoodEntries.find(e => e.id === id) || mockFoodEntries[0]
+    const existingEntry = mockFoodEntries.find(e => e.id === _id) || mockFoodEntries[0]
     return new Promise((resolve) => {
       setTimeout(() => resolve({ ...existingEntry, ...entry }), 500)
     })
@@ -348,9 +348,9 @@ export class LifelogService {
     })
   }
 
-  static async updateSleepEntry(id: string, entry: Partial<SleepEntry>): Promise<SleepEntry> {
+  static async updateSleepEntry(_id: string, entry: Partial<SleepEntry>): Promise<SleepEntry> {
     // TODO: Replace with actual API call
-    const existingEntry = mockSleepEntries.find(e => e.id === id) || mockSleepEntries[0]
+    const existingEntry = mockSleepEntries.find(e => e.id === _id) || mockSleepEntries[0]
     return new Promise((resolve) => {
       setTimeout(() => resolve({ ...existingEntry, ...entry }), 500)
     })
@@ -381,9 +381,9 @@ export class LifelogService {
     })
   }
 
-  static async updateExerciseEntry(id: string, entry: Partial<ExerciseEntry>): Promise<ExerciseEntry> {
+  static async updateExerciseEntry(_id: string, entry: Partial<ExerciseEntry>): Promise<ExerciseEntry> {
     // TODO: Replace with actual API call
-    const existingEntry = mockExerciseEntries.find(e => e.id === id) || mockExerciseEntries[0]
+    const existingEntry = mockExerciseEntries.find(e => e.id === _id) || mockExerciseEntries[0]
     return new Promise((resolve) => {
       setTimeout(() => resolve({ ...existingEntry, ...entry }), 500)
     })
@@ -397,7 +397,7 @@ export class LifelogService {
   }
 
   // Analytics Services
-  static async getNutritionAnalytics(startDate: string, endDate: string): Promise<{
+  static async getNutritionAnalytics(_startDate: string, _endDate: string): Promise<{
     averageCalories: number
     averageProtein: number
     averageFat: number
@@ -426,7 +426,7 @@ export class LifelogService {
     })
   }
 
-  static async getSleepAnalytics(startDate: string, endDate: string): Promise<{
+  static async getSleepAnalytics(_startDate: string, _endDate: string): Promise<{
     averageDuration: number
     averageQuality: number
     averageDeepSleep: number

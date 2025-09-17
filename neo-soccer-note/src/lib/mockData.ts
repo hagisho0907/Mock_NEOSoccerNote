@@ -247,7 +247,7 @@ export interface LabResult {
   type: 'blood' | 'body_composition' | 'genetic'
   source: string
   date: string
-  results: Record<string, any>
+  results: Record<string, string | number>
 }
 
 export const mockMedicalHistory: MedicalHistory[] = [
@@ -336,8 +336,7 @@ export const mockChatMessages: ChatMessage[] = [
     id: '1',
     role: 'assistant',
     content: '直近の動画(02:14〜)を確認。高位置奪取から3秒でフィニッシュまで到達できています。再現のための2ドリルを提案します。',
-    timestamp: '2024-09-17 14:30',
-    references: ['event#124', 'video#15']
+    timestamp: '2024-09-17 14:30'
   },
   {
     id: '2',
@@ -349,8 +348,68 @@ export const mockChatMessages: ChatMessage[] = [
     id: '3',
     role: 'assistant',
     content: 'OK。10分: 圧縮→スイッチ合図練習、20分: ハーフスペース侵入→受け手の角度作り。',
-    timestamp: '2024-09-17 14:33',
-    references: ['event#124', 'sleep_score']
+    timestamp: '2024-09-17 14:33'
+  }
+]
+
+// Chat Summary Data
+export interface ChatSummary {
+  id: string
+  date: string
+  title: string
+  todos: string[]
+  keyPoints: string[]
+  createdAt: string
+}
+
+export const mockChatSummaries: ChatSummary[] = [
+  {
+    id: '1',
+    date: '2024-09-17',
+    title: '練習メニュー最適化セッション',
+    todos: [
+      '圧縮→スイッチ合図練習 (10分)',
+      'ハーフスペース侵入練習 (20分)',
+      '受け手の角度作り意識'
+    ],
+    keyPoints: [
+      '高位置奪取から3秒でフィニッシュまで到達可能',
+      '時間制約に合わせたメニュー調整が効果的',
+      '技術と戦術の組み合わせが重要'
+    ],
+    createdAt: '2024-09-17 14:35'
+  },
+  {
+    id: '2',
+    date: '2024-09-16',
+    title: 'コンディション管理相談',
+    todos: [
+      '睡眠時間を7時間以上確保',
+      '練習前のウォームアップ強化',
+      '栄養補給タイミング見直し'
+    ],
+    keyPoints: [
+      'ACWR値が高めで疲労蓄積の兆候',
+      '睡眠の質向上が最優先',
+      '回復セッションの追加を検討'
+    ],
+    createdAt: '2024-09-16 19:20'
+  },
+  {
+    id: '3',
+    date: '2024-09-15',
+    title: '試合分析とフィードバック',
+    todos: [
+      'サイドチェンジのタイミング改善',
+      'プレス回避の練習',
+      '1vs1の仕掛けパターン増加'
+    ],
+    keyPoints: [
+      '前半のゴールシーンは理想的',
+      'プレスのタイミングに課題',
+      'パス精度の向上が必要'
+    ],
+    createdAt: '2024-09-15 21:00'
   }
 ]
 

@@ -25,8 +25,7 @@ import {
   Alert,
   AlertIcon,
   AlertDescription,
-  Checkbox,
-  IconButton
+  Checkbox
 } from '@chakra-ui/react'
 import { Card } from '../Card'
 import { mockTasks, mockNotes } from '@/lib/mockData'

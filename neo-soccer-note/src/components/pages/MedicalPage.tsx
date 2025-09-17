@@ -24,11 +24,6 @@ import {
   Textarea,
   NumberInput,
   NumberInputField,
-  Progress,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
   Alert,
   AlertIcon,
   AlertDescription,
@@ -46,9 +41,7 @@ import {
   mockLabResults,
   mockIntegrations,
   MedicalHistory,
-  Screening,
-  RehabPlan,
-  LabResult
+  Screening
 } from '@/lib/mockData'
 import { useState } from 'react'
 
