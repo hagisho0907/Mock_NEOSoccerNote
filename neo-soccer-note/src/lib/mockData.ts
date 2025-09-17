@@ -411,3 +411,116 @@ export const mockExerciseEntries: ExerciseEntry[] = [
     startTime: '18:30'
   }
 ]
+
+// Video and Match Stats
+export interface VideoClip {
+  id: string
+  sessionId: string
+  title: string
+  duration: number // seconds
+  thumbnailUrl: string
+  videoUrl: string
+  source: 'veo' | 'hudl' | 'manual'
+  tags: string[]
+  startTime: string
+  endTime: string
+}
+
+export interface MatchStats {
+  id: string
+  sessionId: string
+  goals: number
+  assists: number
+  shots: number
+  shotsOnTarget: number
+  passes: number
+  passAccuracy: number
+  crosses: number
+  crossAccuracy: number
+  duelsWon: number
+  duelsTotal: number
+  pressures: number
+  intercepts: number
+  tackles: number
+  fouls: number
+  yellowCards: number
+  redCards: number
+  minutesPlayed: number
+  playerRating: number
+}
+
+export const mockVideoClips: VideoClip[] = [
+  {
+    id: '1',
+    sessionId: '1',
+    title: 'vs Seaside U18 - フルマッチ',
+    duration: 5400, // 90 minutes
+    thumbnailUrl: '/videos/thumb1.jpg',
+    videoUrl: '/videos/match1.mp4',
+    source: 'veo',
+    tags: ['試合', 'フルマッチ'],
+    startTime: '00:00',
+    endTime: '90:00'
+  },
+  {
+    id: '2',
+    sessionId: '1', 
+    title: 'ゴールシーン - 前半15分',
+    duration: 30,
+    thumbnailUrl: '/videos/thumb2.jpg',
+    videoUrl: '/videos/goal1.mp4',
+    source: 'veo',
+    tags: ['ゴール', 'ハイライト'],
+    startTime: '14:45',
+    endTime: '15:15'
+  },
+  {
+    id: '3',
+    sessionId: '1',
+    title: 'アシストシーン - 後半33分',
+    duration: 25,
+    thumbnailUrl: '/videos/thumb3.jpg', 
+    videoUrl: '/videos/assist1.mp4',
+    source: 'veo',
+    tags: ['アシスト', 'パス'],
+    startTime: '78:10',
+    endTime: '78:35'
+  },
+  {
+    id: '4',
+    sessionId: '2',
+    title: '練習ハイライト',
+    duration: 180,
+    thumbnailUrl: '/videos/thumb4.jpg',
+    videoUrl: '/videos/training1.mp4', 
+    source: 'hudl',
+    tags: ['練習', 'ドリル'],
+    startTime: '00:00',
+    endTime: '03:00'
+  }
+]
+
+export const mockMatchStats: MatchStats[] = [
+  {
+    id: '1',
+    sessionId: '1',
+    goals: 1,
+    assists: 1,
+    shots: 4,
+    shotsOnTarget: 2,
+    passes: 42,
+    passAccuracy: 78.6,
+    crosses: 6,
+    crossAccuracy: 33.3,
+    duelsWon: 8,
+    duelsTotal: 13,
+    pressures: 15,
+    intercepts: 3,
+    tackles: 4,
+    fouls: 2,
+    yellowCards: 0,
+    redCards: 0,
+    minutesPlayed: 75,
+    playerRating: 7.5
+  }
+]
