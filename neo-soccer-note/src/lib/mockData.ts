@@ -481,6 +481,73 @@ export const mockNextActions = [
   '食事：練習60分前に炭水化物 40g 補給'
 ]
 
+// Tab Summary Data
+export interface TabSummary {
+  stats: {
+    latestSession: string
+    weeklyActivity: string
+    latestRating: number
+    videoStatus: string
+  }
+  lifelog: {
+    sleepScore: string
+    nutrition: string
+    exercise: string
+    deviceStatus: string
+  }
+  medical: {
+    rehabStatus: string
+    latestScreening: string
+    risks: string
+    nextCheckup: string
+  }
+  note: {
+    todayMemo: string
+    pendingTasks: number
+    recentNote: string
+    urgentDeadlines: number
+  }
+  buddy: {
+    lastConsultation: string
+    generatedTodos: number
+    keyAdvice: string
+    nextRecommendedArea: string
+  }
+}
+
+export const mockTabSummary: TabSummary = {
+  stats: {
+    latestSession: "vs Seaside U18",
+    weeklyActivity: "試合2回 練習3回",
+    latestRating: 7.5,
+    videoStatus: "動画3本 新着"
+  },
+  lifelog: {
+    sleepScore: "8h 品質90%",
+    nutrition: "P25g F18g C55g",
+    exercise: "540kcal",
+    deviceStatus: "Oura 同期済み"
+  },
+  medical: {
+    rehabStatus: "右膝: フェーズ3 復帰準備中",
+    latestScreening: "FMS: 16/21",
+    risks: "筋力左右差",
+    nextCheckup: "10/1"
+  },
+  note: {
+    todayMemo: "戦術練習ポイント確認",
+    pendingTasks: 3,
+    recentNote: "vs Seaside戦分析",
+    urgentDeadlines: 2
+  },
+  buddy: {
+    lastConsultation: "練習メニュー最適化",
+    generatedTodos: 3,
+    keyAdvice: "技術と戦術の組み合わせ重要",
+    nextRecommendedArea: "フィジカル"
+  }
+}
+
 // Integration Settings
 export interface Integration {
   id: string

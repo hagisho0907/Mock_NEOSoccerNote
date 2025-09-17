@@ -17,7 +17,7 @@ export default function Home() {
   const renderPage = () => {
     switch (activeTab) {
       case 'home':
-        return <HomePage />
+        return <HomePage onTabChange={setActiveTab} />
       case 'stats':
         return <StatsPage />
       case 'lifelog':
@@ -33,7 +33,7 @@ export default function Home() {
       case 'settings':
         return <SettingsPage />
       default:
-        return <HomePage />
+        return <HomePage onTabChange={setActiveTab} />
     }
   }
 
