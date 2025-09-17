@@ -6,6 +6,7 @@ import {
   Task, 
   KPI, 
   ChatMessage,
+  Integration,
   mockPlayer,
   mockKPIs,
   mockSessions,
@@ -13,7 +14,8 @@ import {
   mockChatMessages,
   mockAlerts,
   mockNextActions,
-  mockWeeklyPlan
+  mockWeeklyPlan,
+  mockIntegrations
 } from '@/lib/mockData'
 
 // Base API configuration
@@ -224,6 +226,66 @@ export class PassportService {
     // TODO: Replace with actual API call
     return new Promise((resolve) => {
       setTimeout(() => resolve(`signature-${Date.now()}`), 1000)
+    })
+  }
+}
+
+export class IntegrationService {
+  static async getIntegrations(): Promise<Integration[]> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(mockIntegrations), 500)
+    })
+  }
+
+  static async connectIntegration(id: string, _credentials: unknown): Promise<Integration> {
+    // TODO: Replace with actual API call
+    const integration = mockIntegrations.find(i => i.id === id)
+    if (!integration) {
+      throw new Error('Integration not found')
+    }
+    
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({
+        ...integration,
+        status: 'connected',
+        lastSync: new Date().toISOString(),
+        accountInfo: 'user@example.com'
+      }), 2000)
+    })
+  }
+
+  static async disconnectIntegration(_id: string): Promise<void> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(), 500)
+    })
+  }
+
+  static async syncIntegration(id: string): Promise<Integration> {
+    // TODO: Replace with actual API call
+    const integration = mockIntegrations.find(i => i.id === id)
+    if (!integration) {
+      throw new Error('Integration not found')
+    }
+    
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({
+        ...integration,
+        lastSync: new Date().toISOString()
+      }), 1000)
+    })
+  }
+
+  static async updateIntegrationSettings(id: string, _settings: unknown): Promise<Integration> {
+    // TODO: Replace with actual API call
+    const integration = mockIntegrations.find(i => i.id === id)
+    if (!integration) {
+      throw new Error('Integration not found')
+    }
+    
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(integration), 500)
     })
   }
 }

@@ -24,6 +24,7 @@ const TABS = [
   { id: 'note', label: 'Note' },
   { id: 'buddy', label: 'Buddy' },
   { id: 'support', label: 'Support' },
+  { id: 'settings', label: 'Settings' },
 ]
 
 export function Layout({ children, activeTab, onTabChange }: LayoutProps) {

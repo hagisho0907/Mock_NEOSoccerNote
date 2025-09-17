@@ -165,3 +165,85 @@ export const mockNextActions = [
   '30分：ハム主導の加速ドリル + RPE 5 で調整',
   '食事：練習60分前に炭水化物 40g 補給'
 ]
+
+// Integration Settings
+export interface Integration {
+  id: string
+  name: string
+  type: 'video' | 'wearable' | 'smartphone' | 'medical'
+  status: 'connected' | 'disconnected' | 'pending'
+  lastSync?: string
+  accountInfo?: string
+}
+
+export const mockIntegrations: Integration[] = [
+  {
+    id: '1',
+    name: 'Veo Camera',
+    type: 'video',
+    status: 'connected',
+    lastSync: '2024-09-17 14:30',
+    accountInfo: 'team.neosoccer@veo.co'
+  },
+  {
+    id: '2',
+    name: 'Hudl',
+    type: 'video',
+    status: 'disconnected'
+  },
+  {
+    id: '3',
+    name: 'Oura Ring',
+    type: 'wearable',
+    status: 'connected',
+    lastSync: '2024-09-17 06:00',
+    accountInfo: 'tanaka.taro@email.com'
+  },
+  {
+    id: '4',
+    name: 'Garmin',
+    type: 'wearable',
+    status: 'disconnected'
+  },
+  {
+    id: '5',
+    name: 'WHOOP',
+    type: 'wearable',
+    status: 'pending',
+    accountInfo: 'tanaka.taro@email.com'
+  },
+  {
+    id: '6',
+    name: 'Apple Health',
+    type: 'smartphone',
+    status: 'connected',
+    lastSync: '2024-09-17 15:45'
+  },
+  {
+    id: '7',
+    name: 'Google Fit',
+    type: 'smartphone',
+    status: 'disconnected'
+  },
+  {
+    id: '8',
+    name: '田中クリニック',
+    type: 'medical',
+    status: 'connected',
+    accountInfo: '患者ID: P2024-0892',
+    lastSync: '2024-09-10 10:30'
+  },
+  {
+    id: '9',
+    name: 'Genesis Healthcare',
+    type: 'medical',
+    status: 'disconnected'
+  },
+  {
+    id: '10',
+    name: 'DeNA MYCODE',
+    type: 'medical',
+    status: 'pending',
+    accountInfo: 'sample.kit.sent'
+  }
+]

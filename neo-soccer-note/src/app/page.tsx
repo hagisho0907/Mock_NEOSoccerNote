@@ -7,6 +7,7 @@ import { StatsPage } from '@/components/pages/StatsPage'
 import { NotePage } from '@/components/pages/NotePage'
 import { BuddyPage } from '@/components/pages/BuddyPage'
 import { SupportPage } from '@/components/pages/SupportPage'
+import { SettingsPage } from '@/components/pages/SettingsPage'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('home')
@@ -23,6 +24,8 @@ export default function Home() {
         return <BuddyPage />
       case 'support':
         return <SupportPage />
+      case 'settings':
+        return <SettingsPage />
       default:
         return <HomePage />
     }
