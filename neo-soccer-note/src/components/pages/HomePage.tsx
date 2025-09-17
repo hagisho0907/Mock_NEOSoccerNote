@@ -21,14 +21,14 @@ interface HomePageProps {
   onTabChange?: (tab: string) => void
 }
 
-export function HomePage({ onTabChange }: HomePageProps) {
+export function HomePage({ onTabChange: _onTabChange }: HomePageProps) {
 
   const statsKPIs = mockKPIs.slice(0, 4) // Stats Page Data
   const lifelogKPIs = mockKPIs.slice(4, 8) // Lifelog Page Data  
   const medicalKPIs = mockKPIs.slice(8, 12) // Medical Page Data
   const sessionKPIs = mockKPIs.slice(12, 14) // Session Data
 
-  const KPICard = ({ kpi, colorScheme = "gray" }: { kpi: any, colorScheme?: string }) => (
+  const KPICard = ({ kpi, colorScheme = "gray" }: { kpi: { label: string; value: string; subtext: string }, colorScheme?: string }) => (
     <Box
       bg="white"
       rounded="xl"
