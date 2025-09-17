@@ -162,6 +162,47 @@ export const mockTasks: Task[] = [
   }
 ]
 
+// Note Data
+export interface Note {
+  id: string
+  date: string
+  title: string
+  content: string
+  type: 'match' | 'training' | 'general'
+  createdAt: string
+  updatedAt: string
+}
+
+export const mockNotes: Note[] = [
+  {
+    id: '1',
+    date: '2024-09-15',
+    title: 'vs Seaside U18 - 試合メモ',
+    content: '前半15分のゴールシーンが良かった。左サイドから中央へのカットインでDF2人を振り切ってシュート。\n\n改善点：\n- プレスのタイミングがまだ甘い\n- パスの精度を上げる必要あり',
+    type: 'match',
+    createdAt: '2024-09-15T20:30:00',
+    updatedAt: '2024-09-15T20:30:00'
+  },
+  {
+    id: '2',
+    date: '2024-09-14',
+    title: '練習メモ - ドリブル練習',
+    content: 'コーンドリブル練習を重点的に実施。\n- 1対1の際の仕掛けるタイミング\n- ボールタッチの回数を減らす\n- 相手の重心を見極める',
+    type: 'training',
+    createdAt: '2024-09-14T18:00:00',
+    updatedAt: '2024-09-14T18:00:00'
+  },
+  {
+    id: '3',
+    date: '2024-09-12',
+    title: 'FC Thunder戦 - 戦術分析',
+    content: '相手チームの4-2-3-1に対して、我々の4-3-3がうまく機能した。\n\nキーポイント：\n- サイドバックの上がりタイミング\n- 中盤の3人の連携\n- カウンターアタックの速度',
+    type: 'match',
+    createdAt: '2024-09-12T21:15:00',
+    updatedAt: '2024-09-12T21:15:00'
+  }
+]
+
 export const mockChatMessages: ChatMessage[] = [
   {
     id: '1',
