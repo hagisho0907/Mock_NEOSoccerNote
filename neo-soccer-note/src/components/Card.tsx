@@ -7,8 +7,8 @@ import {
   BoxProps
 } from '@chakra-ui/react'
 
-interface CardProps extends BoxProps {
-  title: string
+interface CardProps extends Omit<BoxProps, 'title'> {
+  title: string | React.ReactNode
   rightElement?: React.ReactNode
 }
 
@@ -24,9 +24,15 @@ export function Card({ title, rightElement, children, ...props }: CardProps) {
       {...props}
     >
       <Flex justify="space-between" align="center" mb={3}>
-        <Heading size="sm" color="gray.800">
-          {title}
-        </Heading>
+        {typeof title === 'string' ? (
+          <Heading size="sm" color="gray.800">
+            {title}
+          </Heading>
+        ) : (
+          <Box>
+            {title}
+          </Box>
+        )}
         {rightElement}
       </Flex>
       {children}
