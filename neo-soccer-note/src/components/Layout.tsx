@@ -21,6 +21,7 @@ interface LayoutProps {
 const TABS = [
   { id: 'home', label: 'Home' },
   { id: 'stats', label: 'Stats' },
+  { id: 'lifelog', label: 'Lifelog' },
   { id: 'note', label: 'Note' },
   { id: 'buddy', label: 'Buddy' },
   { id: 'support', label: 'Support' },

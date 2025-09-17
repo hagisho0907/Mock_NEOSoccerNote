@@ -247,3 +247,167 @@ export const mockIntegrations: Integration[] = [
     accountInfo: 'sample.kit.sent'
   }
 ]
+
+// Lifelog Data
+export interface FoodEntry {
+  id: string
+  date: string
+  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack'
+  name: string
+  protein: number // g
+  fat: number // g
+  carbs: number // g
+  calories: number
+  time: string
+}
+
+export interface SleepEntry {
+  id: string
+  date: string
+  bedTime: string
+  wakeTime: string
+  duration: number // minutes
+  quality: number // 1-10
+  deepSleep?: number // minutes
+  remSleep?: number // minutes
+  source: 'manual' | 'oura' | 'apple_health' | 'garmin'
+}
+
+export interface ExerciseEntry {
+  id: string
+  date: string
+  type: string
+  duration: number // minutes
+  calories: number
+  heartRate?: {
+    average: number
+    max: number
+  }
+  source: 'manual' | 'apple_health' | 'garmin' | 'whoop'
+  startTime: string
+}
+
+export const mockFoodEntries: FoodEntry[] = [
+  {
+    id: '1',
+    date: '2024-09-17',
+    mealType: 'breakfast',
+    name: 'オートミール + バナナ + プロテイン',
+    protein: 25,
+    fat: 8,
+    carbs: 45,
+    calories: 340,
+    time: '07:30'
+  },
+  {
+    id: '2',
+    date: '2024-09-17',
+    mealType: 'lunch',
+    name: '鶏胸肉サラダ + 玄米',
+    protein: 35,
+    fat: 12,
+    carbs: 50,
+    calories: 420,
+    time: '12:30'
+  },
+  {
+    id: '3',
+    date: '2024-09-17',
+    mealType: 'snack',
+    name: 'ナッツとドライフルーツ',
+    protein: 6,
+    fat: 15,
+    carbs: 20,
+    calories: 220,
+    time: '15:00'
+  },
+  {
+    id: '4',
+    date: '2024-09-17',
+    mealType: 'dinner',
+    name: '鮭の塩焼き + 野菜炒め + ご飯',
+    protein: 30,
+    fat: 18,
+    carbs: 55,
+    calories: 480,
+    time: '19:00'
+  }
+]
+
+export const mockSleepEntries: SleepEntry[] = [
+  {
+    id: '1',
+    date: '2024-09-17',
+    bedTime: '23:00',
+    wakeTime: '07:00',
+    duration: 480,
+    quality: 8,
+    deepSleep: 120,
+    remSleep: 90,
+    source: 'oura'
+  },
+  {
+    id: '2',
+    date: '2024-09-16',
+    bedTime: '23:30',
+    wakeTime: '06:45',
+    duration: 435,
+    quality: 6,
+    deepSleep: 95,
+    remSleep: 85,
+    source: 'oura'
+  },
+  {
+    id: '3',
+    date: '2024-09-15',
+    bedTime: '22:45',
+    wakeTime: '07:15',
+    duration: 510,
+    quality: 9,
+    deepSleep: 140,
+    remSleep: 110,
+    source: 'oura'
+  }
+]
+
+export const mockExerciseEntries: ExerciseEntry[] = [
+  {
+    id: '1',
+    date: '2024-09-17',
+    type: 'サッカー練習',
+    duration: 90,
+    calories: 540,
+    heartRate: {
+      average: 145,
+      max: 178
+    },
+    source: 'garmin',
+    startTime: '16:00'
+  },
+  {
+    id: '2',
+    date: '2024-09-17',
+    type: 'ランニング',
+    duration: 30,
+    calories: 280,
+    heartRate: {
+      average: 155,
+      max: 170
+    },
+    source: 'apple_health',
+    startTime: '07:00'
+  },
+  {
+    id: '3',
+    date: '2024-09-16',
+    type: '筋力トレーニング',
+    duration: 45,
+    calories: 210,
+    heartRate: {
+      average: 125,
+      max: 150
+    },
+    source: 'manual',
+    startTime: '18:30'
+  }
+]

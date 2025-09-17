@@ -7,6 +7,9 @@ import {
   KPI, 
   ChatMessage,
   Integration,
+  FoodEntry,
+  SleepEntry,
+  ExerciseEntry,
   mockPlayer,
   mockKPIs,
   mockSessions,
@@ -15,7 +18,10 @@ import {
   mockAlerts,
   mockNextActions,
   mockWeeklyPlan,
-  mockIntegrations
+  mockIntegrations,
+  mockFoodEntries,
+  mockSleepEntries,
+  mockExerciseEntries
 } from '@/lib/mockData'
 
 // Base API configuration
@@ -286,6 +292,164 @@ export class IntegrationService {
     
     return new Promise((resolve) => {
       setTimeout(() => resolve(integration), 500)
+    })
+  }
+}
+
+export class LifelogService {
+  // Food Entry Services
+  static async getFoodEntries(date?: string): Promise<FoodEntry[]> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      const entries = date 
+        ? mockFoodEntries.filter(entry => entry.date === date)
+        : mockFoodEntries
+      setTimeout(() => resolve(entries), 500)
+    })
+  }
+
+  static async createFoodEntry(entry: Omit<FoodEntry, 'id'>): Promise<FoodEntry> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ ...entry, id: Date.now().toString() }), 500)
+    })
+  }
+
+  static async updateFoodEntry(id: string, entry: Partial<FoodEntry>): Promise<FoodEntry> {
+    // TODO: Replace with actual API call
+    const existingEntry = mockFoodEntries.find(e => e.id === id) || mockFoodEntries[0]
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ ...existingEntry, ...entry }), 500)
+    })
+  }
+
+  static async deleteFoodEntry(_id: string): Promise<void> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(), 500)
+    })
+  }
+
+  // Sleep Entry Services
+  static async getSleepEntries(date?: string): Promise<SleepEntry[]> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      const entries = date 
+        ? mockSleepEntries.filter(entry => entry.date === date)
+        : mockSleepEntries
+      setTimeout(() => resolve(entries), 500)
+    })
+  }
+
+  static async createSleepEntry(entry: Omit<SleepEntry, 'id'>): Promise<SleepEntry> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ ...entry, id: Date.now().toString() }), 500)
+    })
+  }
+
+  static async updateSleepEntry(id: string, entry: Partial<SleepEntry>): Promise<SleepEntry> {
+    // TODO: Replace with actual API call
+    const existingEntry = mockSleepEntries.find(e => e.id === id) || mockSleepEntries[0]
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ ...existingEntry, ...entry }), 500)
+    })
+  }
+
+  static async deleteSleepEntry(_id: string): Promise<void> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(), 500)
+    })
+  }
+
+  // Exercise Entry Services
+  static async getExerciseEntries(date?: string): Promise<ExerciseEntry[]> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      const entries = date 
+        ? mockExerciseEntries.filter(entry => entry.date === date)
+        : mockExerciseEntries
+      setTimeout(() => resolve(entries), 500)
+    })
+  }
+
+  static async createExerciseEntry(entry: Omit<ExerciseEntry, 'id'>): Promise<ExerciseEntry> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ ...entry, id: Date.now().toString() }), 500)
+    })
+  }
+
+  static async updateExerciseEntry(id: string, entry: Partial<ExerciseEntry>): Promise<ExerciseEntry> {
+    // TODO: Replace with actual API call
+    const existingEntry = mockExerciseEntries.find(e => e.id === id) || mockExerciseEntries[0]
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({ ...existingEntry, ...entry }), 500)
+    })
+  }
+
+  static async deleteExerciseEntry(_id: string): Promise<void> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve(), 500)
+    })
+  }
+
+  // Analytics Services
+  static async getNutritionAnalytics(startDate: string, endDate: string): Promise<{
+    averageCalories: number
+    averageProtein: number
+    averageFat: number
+    averageCarbs: number
+    dailyTrends: Array<{
+      date: string
+      calories: number
+      protein: number
+      fat: number
+      carbs: number
+    }>
+  }> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({
+        averageCalories: 1460,
+        averageProtein: 96,
+        averageFat: 53,
+        averageCarbs: 170,
+        dailyTrends: [
+          { date: '2024-09-17', calories: 1460, protein: 96, fat: 53, carbs: 170 },
+          { date: '2024-09-16', calories: 1520, protein: 102, fat: 58, carbs: 165 },
+          { date: '2024-09-15', calories: 1380, protein: 89, fat: 48, carbs: 175 },
+        ]
+      }), 1000)
+    })
+  }
+
+  static async getSleepAnalytics(startDate: string, endDate: string): Promise<{
+    averageDuration: number
+    averageQuality: number
+    averageDeepSleep: number
+    averageRemSleep: number
+    sleepTrends: Array<{
+      date: string
+      duration: number
+      quality: number
+    }>
+  }> {
+    // TODO: Replace with actual API call
+    return new Promise((resolve) => {
+      setTimeout(() => resolve({
+        averageDuration: 475,
+        averageQuality: 7.7,
+        averageDeepSleep: 118,
+        averageRemSleep: 95,
+        sleepTrends: [
+          { date: '2024-09-17', duration: 480, quality: 8 },
+          { date: '2024-09-16', duration: 435, quality: 6 },
+          { date: '2024-09-15', duration: 510, quality: 9 },
+        ]
+      }), 1000)
     })
   }
 }
