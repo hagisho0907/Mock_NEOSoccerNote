@@ -65,10 +65,27 @@ export const mockPlayer: Player = {
 }
 
 export const mockKPIs: KPI[] = [
-  { label: '進行パス', value: '12本', subtext: '+3 vs 平均', trend: 'up' },
-  { label: 'デュエル勝率', value: '61%', subtext: '-4% vs 先週', trend: 'down' },
-  { label: '睡眠効率', value: '90%', subtext: '+5%', trend: 'up' },
-  { label: 'ACWR', value: '1.45', subtext: '⚠ 急増 注意', trend: 'down' },
+  // Stats Page Data
+  { label: 'パス成功率', value: '78.6%', subtext: 'vs Seaside戦', trend: 'up' },
+  { label: 'デュエル勝率', value: '61.5%', subtext: '8/13勝', trend: 'neutral' },
+  { label: 'シュート精度', value: '50.0%', subtext: '2/4本成功', trend: 'down' },
+  { label: '平均評価', value: '7.5', subtext: '前回試合', trend: 'up' },
+  
+  // Lifelog Page Data
+  { label: '睡眠効率', value: '8.0h', subtext: '品質8/10点', trend: 'up' },
+  { label: '日間PFC', value: '96g', subtext: 'プロテイン摂取', trend: 'up' },
+  { label: '運動強度', value: '145bpm', subtext: '平均心拍数', trend: 'neutral' },
+  { label: '消費カロリー', value: '540kcal', subtext: '今日の運動', trend: 'up' },
+  
+  // Medical Page Data
+  { label: 'FMSスコア', value: '16/21', subtext: '可動域評価', trend: 'down' },
+  { label: '筋力バランス', value: '5%差', subtext: 'ハム左右差', trend: 'down' },
+  { label: '可動域状況', value: '5°差', subtext: '肩関節左右', trend: 'neutral' },
+  { label: 'リスク要因', value: '2件', subtext: '要注意項目', trend: 'down' },
+  
+  // Session Data
+  { label: '週間活動', value: '5回', subtext: '試合2 練習3', trend: 'up' },
+  { label: '連続日数', value: '4日', subtext: '活動継続中', trend: 'up' },
 ]
 
 export const mockSessions: Session[] = [
