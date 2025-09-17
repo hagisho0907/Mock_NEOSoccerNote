@@ -91,6 +91,47 @@ export const mockSessions: Session[] = [
     formation: '4-3-3',
     playTime: 90,
     position: 'CM',
+  },
+  {
+    id: '3',
+    type: 'match',
+    date: '2024-09-12',
+    opponent: 'FC Thunder',
+    venue: '総合運動公園',
+    formation: '4-2-3-1',
+    playTime: 90,
+    position: 'CAM',
+    rating: 8.2
+  },
+  {
+    id: '4',
+    type: 'self_training',
+    date: '2024-09-11',
+    venue: '近所の公園',
+    formation: '',
+    playTime: 60,
+    position: '個人練習',
+    rating: 6.5
+  },
+  {
+    id: '5',
+    type: 'match',
+    date: '2024-09-08',
+    opponent: 'Green Valley FC',
+    venue: 'ホーム',
+    formation: '4-3-3',
+    playTime: 45,
+    position: 'LWG',
+    rating: 6.8
+  },
+  {
+    id: '6',
+    type: 'training',
+    date: '2024-09-07',
+    venue: 'クラブハウス',
+    formation: '4-3-3',
+    playTime: 120,
+    position: 'MF',
   }
 ]
 

@@ -50,7 +50,9 @@ import {
   VideoClip, 
   MatchStats, 
   mockVideoClips, 
-  mockMatchStats 
+  mockMatchStats,
+  mockSessions,
+  Session
 } from '@/lib/mockData'
 
 // アイコン
@@ -71,6 +73,104 @@ const DownloadIcon = () => (
     <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
   </svg>
 )
+
+const VideoIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/>
+  </svg>
+)
+
+const CalendarIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+  </svg>
+)
+
+interface SessionCardProps {
+  session: Session
+  hasVideo?: boolean
+}
+
+function SessionCard({ session, hasVideo = false }: SessionCardProps) {
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'match': return 'blue'
+      case 'training': return 'green'  
+      case 'self_training': return 'purple'
+      default: return 'gray'
+    }
+  }
+
+  const getTypeLabel = (type: string) => {
+    switch (type) {
+      case 'match': return '試合'
+      case 'training': return '練習'
+      case 'self_training': return '自主練'
+      default: return type
+    }
+  }
+
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr)
+    return `${date.getMonth() + 1}/${date.getDate()}`
+  }
+
+  return (
+    <Box border="1px" borderColor="gray.200" rounded="lg" p={4} _hover={{ borderColor: "brand.300", shadow: "sm" }} transition="all 0.2s">
+      <VStack align="stretch" spacing={3}>
+        <HStack justify="space-between" align="start">
+          <VStack align="start" spacing={1}>
+            <HStack spacing={2}>
+              <Badge colorScheme={getTypeColor(session.type)} size="sm">
+                {getTypeLabel(session.type)}
+              </Badge>
+              {hasVideo && (
+                <Badge colorScheme="orange" size="sm" leftIcon={<VideoIcon />}>
+                  動画あり
+                </Badge>
+              )}
+            </HStack>
+            
+            <Text fontSize="sm" fontWeight="medium">
+              {session.type === 'match' && session.opponent ? 
+                `vs ${session.opponent}` : 
+                session.venue
+              }
+            </Text>
+            
+            <HStack spacing={4} fontSize="xs" color="gray.600">
+              <HStack spacing={1}>
+                <CalendarIcon />
+                <Text>{formatDate(session.date)}</Text>
+              </HStack>
+              <Text>{session.playTime}分</Text>
+              {session.position && (
+                <Text>{session.position}</Text>
+              )}
+            </HStack>
+          </VStack>
+          
+          {session.rating && (
+            <Stat size="sm" textAlign="right">
+              <StatNumber fontSize="lg" color="brand.500">
+                {session.rating}
+              </StatNumber>
+              <StatHelpText fontSize="xs" mt={0}>
+                評価
+              </StatHelpText>
+            </Stat>
+          )}
+        </HStack>
+        
+        {session.formation && (
+          <Text fontSize="xs" color="gray.500">
+            {session.formation}
+          </Text>
+        )}
+      </VStack>
+    </Box>
+  )
+}
 
 interface VideoModalProps {
   isOpen: boolean
@@ -384,6 +484,25 @@ export function StatsPage() {
                 </VStack>
               </Card>
             </Grid>
+            
+            {/* セッション履歴 */}
+            <Card title="セッション履歴" rightElement={
+              <Text fontSize="sm" color="gray.500">最新6件</Text>
+            }>
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
+                {mockSessions.map((session) => {
+                  // セッションに対応する動画があるかチェック
+                  const hasVideo = mockVideoClips.some(video => video.sessionId === session.id)
+                  return (
+                    <SessionCard 
+                      key={session.id} 
+                      session={session} 
+                      hasVideo={hasVideo}
+                    />
+                  )
+                })}
+              </SimpleGrid>
+            </Card>
           </TabPanel>
 
           {/* 詳細スタッツタブ */}
