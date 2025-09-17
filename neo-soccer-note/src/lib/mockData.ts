@@ -362,6 +362,52 @@ export interface ChatSummary {
   createdAt: string
 }
 
+// Passport Data
+export interface PassportFile {
+  id: string
+  fileName: string
+  generatedDate: string
+  fileSize: string
+  status: 'ready' | 'generating' | 'expired'
+  downloadUrl?: string
+  expiresAt?: string
+}
+
+export const mockPassportFiles: PassportFile[] = [
+  {
+    id: '1',
+    fileName: 'サッカーパスポート_2024年9月.pdf',
+    generatedDate: '2024-09-17',
+    fileSize: '2.4MB',
+    status: 'ready',
+    downloadUrl: '/downloads/passport-202409.pdf'
+  },
+  {
+    id: '2', 
+    fileName: 'サッカーパスポート_2024年8月.pdf',
+    generatedDate: '2024-08-31',
+    fileSize: '2.1MB',
+    status: 'ready',
+    downloadUrl: '/downloads/passport-202408.pdf'
+  },
+  {
+    id: '3',
+    fileName: 'サッカーパスポート_2024年7月.pdf',
+    generatedDate: '2024-07-30',
+    fileSize: '1.9MB', 
+    status: 'ready',
+    downloadUrl: '/downloads/passport-202407.pdf'
+  },
+  {
+    id: '4',
+    fileName: 'サッカーパスポート_2024年6月.pdf',
+    generatedDate: '2024-06-28',
+    fileSize: '2.2MB',
+    status: 'ready',
+    downloadUrl: '/downloads/passport-202406.pdf'
+  }
+]
+
 export const mockChatSummaries: ChatSummary[] = [
   {
     id: '1',
