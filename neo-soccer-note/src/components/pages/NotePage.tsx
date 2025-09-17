@@ -24,7 +24,9 @@ import {
   Select,
   Alert,
   AlertIcon,
-  AlertDescription
+  AlertDescription,
+  Checkbox,
+  IconButton
 } from '@chakra-ui/react'
 import { Card } from '../Card'
 import { mockTasks, mockNotes } from '@/lib/mockData'
@@ -38,6 +40,7 @@ export function NotePage() {
     content: '',
     type: 'general' as 'match' | 'training' | 'general'
   })
+  const [tasks, setTasks] = useState(mockTasks)
 
   // 現在の日付を取得
   const today = new Date()
@@ -99,6 +102,17 @@ export function NotePage() {
     // TODO: 実際の保存処理
     alert(`${formatDateForModal(selectedDate)}のノートを保存しました`)
     onNoteModalClose()
+  }
+
+  const handleTaskToggle = (taskId: string) => {
+    setTasks(prevTasks => 
+      prevTasks.filter(task => task.id !== taskId)
+    )
+  }
+
+  const handleAddTask = () => {
+    // TODO: 実際のタスク追加処理
+    alert('新しいタスクを追加します')
   }
 
   return (
@@ -179,46 +193,50 @@ export function NotePage() {
       </Card>
 
       {/* 課題/タスク */}
-      <Card title="課題/タスク">
-        <VStack spacing={3}>
-          <VStack spacing={2} w="full">
-            {mockTasks.map((task) => (
-              <HStack
-                key={task.id}
-                justify="space-between"
-                w="full"
-                p={3}
-                rounded="md"
-                bg={task.completed ? "gray.50" : "white"}
-                border="1px"
-                borderColor="gray.200"
-                opacity={task.completed ? 0.7 : 1}
-              >
-                <Text fontSize="sm" flex={1} textDecoration={task.completed ? "line-through" : "none"}>
+      <Card title="課題/タスク" rightElement={
+        <Button 
+          size="sm" 
+          colorScheme="brand"
+          onClick={handleAddTask}
+        >
+          追加
+        </Button>
+      }>
+        <VStack spacing={2} w="full">
+          {tasks.map((task) => (
+            <HStack
+              key={task.id}
+              justify="space-between"
+              w="full"
+              p={3}
+              rounded="md"
+              bg="white"
+              border="1px"
+              borderColor="gray.200"
+              align="center"
+            >
+              <HStack flex={1} spacing={3}>
+                <Checkbox
+                  colorScheme="brand"
+                  isChecked={false}
+                  onChange={() => handleTaskToggle(task.id)}
+                />
+                <Text fontSize="sm" flex={1}>
                   {task.title}
                 </Text>
-                <Badge
-                  colorScheme={
-                    task.priority === 'high' ? 'red' : 
-                    task.priority === 'medium' ? 'orange' : 'gray'
-                  }
-                  variant="subtle"
-                  fontSize="xs"
-                >
-                  期限 {task.deadline.slice(5)}
-                </Badge>
               </HStack>
-            ))}
-          </VStack>
-          
-          <HStack spacing={2} w="full">
-            <Button colorScheme="brand" size="sm" flex={1}>
-              追加
-            </Button>
-            <Button variant="outline" size="sm" flex={1}>
-              テンプレ
-            </Button>
-          </HStack>
+              <Badge
+                colorScheme={
+                  task.priority === 'high' ? 'red' : 
+                  task.priority === 'medium' ? 'orange' : 'gray'
+                }
+                variant="subtle"
+                fontSize="xs"
+              >
+                期限 {task.deadline.slice(5)}
+              </Badge>
+            </HStack>
+          ))}
         </VStack>
       </Card>
 
